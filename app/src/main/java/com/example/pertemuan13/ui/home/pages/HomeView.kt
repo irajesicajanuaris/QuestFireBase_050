@@ -77,7 +77,7 @@ fun HomeScreen(
             modifier = Modifier.padding(innerPadding),
             ondetailClick = ondetailClick,
             onDeleteClick = {
-                viewModel.getMhs()
+                viewModel.deleteMhs(it)
             }
         )
     }
@@ -173,7 +173,7 @@ fun MhsLayout(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable { },
-                    ondeleteClick = {
+                    onDeleteClick = {
                         onDeleteClick(mhs)
                     }
                 )
@@ -186,7 +186,7 @@ fun MhsLayout(
 fun MhsCard(
     mahasiswa: Mahasiswa,
     modifier: Modifier = Modifier,
-    ondeleteClick: (Mahasiswa) -> Unit = {}
+    onDeleteClick: (Mahasiswa) -> Unit = {}
 ){
     Card (
         modifier = modifier,
@@ -206,7 +206,7 @@ fun MhsCard(
                     style = MaterialTheme.typography.titleLarge,
                 )
                 Spacer(Modifier.weight(1f))
-                IconButton(onClick = { ondeleteClick(mahasiswa) }) {
+                IconButton(onClick = { onDeleteClick(mahasiswa) }) {
                     Icon(
                         imageVector = Icons.Default.Delete,
                         contentDescription = null,
